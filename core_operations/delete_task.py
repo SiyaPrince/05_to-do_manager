@@ -19,5 +19,5 @@ def delete_task(tasks):
     print("\n Which task would you like to delete?")
 
     if search_task(to_be_deleted_task):
-        to_be_deleted_task.remove(search_task(to_be_deleted_task))
+        tasks.remove(search_task(to_be_deleted_task))
 

@@ -8,5 +8,5 @@ def search_task(tasks):
         if searchd_keyword in task["title"].lower() or searchd_keyword in task["description"].lower():
             print(f"Task found: {display_task_details(task)}")
             return
-        else:
-            print(f"No task found with the keyword '{searchd_keyword}'.")
+        
+    print(f"No task found with the keyword '{searchd_keyword}'.")

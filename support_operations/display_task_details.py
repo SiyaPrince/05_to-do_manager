@@ -4,3 +4,4 @@ def display_task_details(task):
     print(f"Description: {task['description']}")
     print(f"Due Date: {task['due_date']}")
     print(f"Priority: {task['priority']}")
+    print(f"Status: {task['status']}")
