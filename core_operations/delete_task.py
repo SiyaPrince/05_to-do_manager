@@ -1,23 +1,38 @@
-# Delete task from the list of tasks
-from core_operations import search_task
 from core_operations.view_tasks import view_tasks
+from support_operations.display_task_details import display_task_details
 
 
 def delete_task(tasks):
-    # Ask for task title to delete
-    title = input("Enter the title of the task to delete: ").strip()
-    to_be_deleted_task = []
+    if not tasks:
+        print("No tasks available to delete.")
+        return
 
-    for task in tasks:
-        if task["title"] == title:
-            to_be_deleted_task.append(task)
-        else:
-            print(f"Task '{title}' not found.")
+    view_tasks(tasks)
 
-    view_tasks(to_be_deleted_task)
+    try:
+        task_selection = int(input("\nSelect the task number to delete: "))
+    except ValueError:
+        print("Invalid selection. Please enter a number.")
+        return
 
-    print("\n Which task would you like to delete?")
+    if task_selection < 1 or task_selection > len(tasks):
+        print("Invalid task selection.")
+        return
 
-    if search_task(to_be_deleted_task):
-        tasks.remove(search_task(to_be_deleted_task))
+    selected_index = task_selection - 1
+    selected_task = tasks[selected_index]
 
+    print("\nSelected task:")
+    display_task_details(selected_task)
+
+    confirmation = input(
+        "\nDelete this task? (yes/no): "
+    ).strip().lower()
+
+    if confirmation in ("yes", "y"):
+        deleted_task = tasks.pop(selected_index)
+        print(f"Task '{deleted_task['title']}' deleted successfully.")
+    elif confirmation in ("no", "n"):
+        print("Deletion cancelled.")
+    else:
+        print("Invalid confirmation. Deletion cancelled.")
