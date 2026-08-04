@@ -4,22 +4,9 @@ from core_operations.search_task import search_task
 from core_operations.view_tasks import view_tasks
 from core_operations.update_task import update_task
 from core_operations.complete_task import complete_task
+from support_operations.display_menu import display_menu
+from support_operations.display_welcome import display_welcome_message
 
-
-def display_welcome_message():
-    print("=" * 45)
-    print("\nWelcome to the To-Do List Manager!")
-    print("=" * 45)
-
-def display_menu():
-    print("\nPlease choose an option:")
-    print("1. Add a task")
-    print("2. View tasks")
-    print("3. Search tasks")
-    print("4. Update a task")
-    print("5. Complete a task")
-    print("6. Delete a task")
-    print("7. Exit")
 
 def run_to_do_list():
     # Create empty tasks list
