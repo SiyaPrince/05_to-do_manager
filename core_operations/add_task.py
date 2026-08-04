@@ -1,28 +1,21 @@
+from support_operations import validate_description, validate_description, validate_due_date, validate_priority, validate_title
 from support_operations.display_task_details import display_task_details
 
 def validate_task_details(title, description, due_date, priority):
     # Validate title
-    if not title:
-        print("Task title cannot be empty.")
+    if not validate_title(title):
         return False
 
     # Validate description
-    if not description:
-        print("Task description cannot be empty.")
+    if not validate_description(description):
         return False
 
     # Validate due date format (YYYY-MM-DD)
-    try:
-        year, month, day = map(int, due_date.split('-'))
-        if not (1 <= month <= 12 and 1 <= day <= 31):
-            raise ValueError
-    except ValueError:
-        print("Invalid due date format. Please use YYYY-MM-DD.")
+    if not validate_due_date(due_date):
         return False
 
     # Validate priority
-    if priority.lower() not in ["low", "medium", "high"]:
-        print("Invalid priority. Please choose from low, medium, or high.")
+    if not validate_priority(priority):
         return False
 
     return True
