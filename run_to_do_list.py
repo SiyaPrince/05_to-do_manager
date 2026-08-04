@@ -3,7 +3,7 @@ from core_operations.delete_task import delete_task
 from core_operations.search_task import search_task
 from core_operations.view_tasks import view_tasks
 from core_operations.update_task import update_task
-from core_operations.update_task import complete_task
+from core_operations.complete_task import complete_task
 
 
 def display_welcome_message():
